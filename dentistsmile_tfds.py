@@ -78,17 +78,19 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
         path = {'original_all': 'Original All', 'true_mask': 'segmentation_true_masks'}
         path = {key:os.path.join(dl_manager.manual_dir, 'dataset', value) for key, value in path.items()}
     else:
-        target_dir = '~/tensorflow_datasets/downloads/manual/dentistsmile_segmentation'
-        subprocess.check_output(f'mkdir -p {target_dir}', shell=True)
-        urllib.request.urlretrieve(_BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz', 'dentistsmile_images.tar.xz')
-        urllib.request.urlretrieve(_BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz', 'dentistsmile_annotations.tar.xz')
-        subprocess.check_output(f'tar -xf dentistsmile_images.tar.xz --directory {target_dir}', shell=True)
-        subprocess.check_output(f'tar -xf dentistsmile_annotations.tar.xz --directory {target_dir}', shell=True)
+        # target_dir = '~/tensorflow_datasets/downloads/manual/dentistsmile_segmentation'
+        # subprocess.check_output(f'mkdir -p {target_dir}', shell=True)
+        # urllib.request.urlretrieve(_BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz', 'dentistsmile_images.tar.xz')
+        # urllib.request.urlretrieve(_BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz', 'dentistsmile_annotations.tar.xz')
+        # subprocess.check_output(f'tar -xf dentistsmile_images.tar.xz --directory {target_dir}', shell=True)
+        # subprocess.check_output(f'tar -xf dentistsmile_annotations.tar.xz --directory {target_dir}', shell=True)
+        
+        compressed_path = dl_manager.download_and_extract({    
+            'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz',
+            'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar.xz'
+        })    
 
-        # path = dl_manager.download_and_extract({    
-        #     'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz',
-        #     'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar.xz'
-        # })    
+        path = dl_manager.extract(compressed_path)
 
 
     # annotations_path_dir = os.path.join(_DATASET_BASE_DIR, path['true_masks'], "annotations")
