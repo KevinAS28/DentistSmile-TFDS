@@ -91,7 +91,8 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
             'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images_ori.tar',
             'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar'
         })    
-
+        path['original_all'] = os.path.join(path['original_all'], 'Original All')
+        path['true_mask'] = os.path.join(path['original_all'], 'segmentation_true_masks')
         # path = dl_manager.extract(compressed_path)
 
 
