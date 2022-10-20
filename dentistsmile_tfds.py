@@ -30,7 +30,7 @@ DATASET_BASE_DIR = '/home/kevin/dentistsmile/dentistsmile_tfds/dataset'
 
 
 _POSE_CLASSES = ['A', 'B', 'C', 'D', 'E']
-_BASE_URL = '35.225.193.202:9999'
+_BASE_URL = 'http://35.225.193.202:9999'
 
 class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
   """DatasetBuilder for dentistsmile_tfds dataset."""
