@@ -87,12 +87,12 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
         # subprocess.check_output(f'tar -xf dentistsmile_images.tar.xz --directory {target_dir}', shell=True)
         # subprocess.check_output(f'tar -xf dentistsmile_annotations.tar.xz --directory {target_dir}', shell=True)
         
-        compressed_path = dl_manager.download_and_extract({    
+        path = dl_manager.download_and_extract({    
             'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images_ori.tar',
             'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar'
         })    
 
-        path = dl_manager.extract(compressed_path)
+        # path = dl_manager.extract(compressed_path)
 
 
     # annotations_path_dir = os.path.join(_DATASET_BASE_DIR, path['true_masks'], "annotations")
