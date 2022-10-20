@@ -2,6 +2,8 @@
 
 import tensorflow_datasets as tfds
 import os, random, re
+import urllib.request
+
 
 tfds.core.utils.gcs_utils._is_gcs_disabled = True
 
@@ -78,8 +80,8 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
         path = {key:os.path.join(dl_manager.manual_dir, 'dataset', value) for key, value in path.items()}
     else:
         path = dl_manager.download_and_extract({    
-            'original_all': _BASE_URL + '/file_server0/download/segmentation_images.tar.xz',
-            'true_mask': _BASE_URL + '/file_server0/download/segmentation_annotations.tar.xz'
+            'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz',
+            'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar.xz'
         })    
     # annotations_path_dir = os.path.join(_DATASET_BASE_DIR, path['true_masks'], "annotations")
     # TODO(dentistsmile_tfds): Returns the Dict[split names, Iterator[Key, Example]]
