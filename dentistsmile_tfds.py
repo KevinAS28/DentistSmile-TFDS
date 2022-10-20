@@ -74,6 +74,8 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
     """Returns SplitGenerators."""
     # TODO(dentistsmile_tfds): Downloads the data and defines the splits
     # path = dl_manager.download_and_extract('https://todo-data-url')
+    path = None
+
     if OFFLINE:
         path = {'original_all': 'Original All', 'true_mask': 'segmentation_true_masks'}
         path = {key:os.path.join(dl_manager.manual_dir, 'dataset', value) for key, value in path.items()}
@@ -86,8 +88,8 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
         # subprocess.check_output(f'tar -xf dentistsmile_annotations.tar.xz --directory {target_dir}', shell=True)
         
         compressed_path = dl_manager.download_and_extract({    
-            'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images.tar.xz',
-            'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar.xz'
+            'original_all': _BASE_URL + '/file_server0/download/dentistsmile_images_ori.tar',
+            'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar'
         })    
 
         path = dl_manager.extract(compressed_path)
