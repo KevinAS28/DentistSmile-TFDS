@@ -30,7 +30,7 @@ DATASET_BASE_DIR = '/home/kevin/dentistsmile/dentistsmile_tfds/dataset'
 
 
 _POSE_CLASSES = ['A', 'B', 'C', 'D', 'E']
-_BASE_URL = 'http://http://35.225.193.202:9999'
+_BASE_URL = '35.225.193.202:9999'
 
 class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
   """DatasetBuilder for dentistsmile_tfds dataset."""
@@ -77,7 +77,7 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
         path = {'original_all': 'Original All', 'true_mask': 'segmentation_true_masks'}
         path = {key:os.path.join(dl_manager.manual_dir, 'dataset', value) for key, value in path.items()}
     else:
-        path = dl_manager.download_and_extract({
+        path = dl_manager.download_and_extract({    
             'original_all': _BASE_URL + '/file_server0/download/segmentation_images.tar.xz',
             'true_mask': _BASE_URL + '/file_server0/download/segmentation_annotations.tar.xz'
         })    
