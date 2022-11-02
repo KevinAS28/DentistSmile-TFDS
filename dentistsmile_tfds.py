@@ -77,7 +77,7 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
     path = None
 
     if OFFLINE:
-        path = {'original_all': 'Original All', 'true_mask': 'segmentation_true_masks'}
+        path = {'original_all': 'Original All', 'true_mask': 'segmentation_true_mask'}
         path = {key:os.path.join(dl_manager.manual_dir, 'dataset', value) for key, value in path.items()}
     else:
         # target_dir = '~/tensorflow_datasets/downloads/manual/dentistsmile_segmentation'
@@ -92,7 +92,7 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
             'true_mask': _BASE_URL + '/file_server0/download/dentistsmile_annotations.tar'
         })    
         path['original_all'] = os.path.join(path['original_all'], 'Original All')
-        path['true_mask'] = os.path.join(path['true_mask'], 'segmentation_true_masks')
+        path['true_mask'] = os.path.join(path['true_mask'], 'segmentation_true_mask')
         # path = dl_manager.extract(compressed_path)
 
 
