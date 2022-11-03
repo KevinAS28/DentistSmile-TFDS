@@ -136,7 +136,7 @@ class DentistsmileTfds(tfds.core.GeneratorBasedBuilder):
     #   }
     for img_mask_dir in os.listdir(true_mask_dir_path):
         img_id, pose, extension = re.search(r'([\d]{4,4})([A-Z]{1,1}).([A-Z|a-z]{1,4})', img_mask_dir).groups()
-        img_mask = os.path.join(true_mask_dir_path, img_mask_dir, f'{img_id+pose}_filled_line.png')
+        img_mask = os.path.join(true_mask_dir_path, img_mask_dir, f'{img_id+pose}_inpaint_thick_rgb.png')
         ori_img = os.path.join(original_image_dir_path, img_mask_dir)
 
         record = {
